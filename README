@@ -1,4 +1,29 @@
 This is a project to develop some example scripts in Perl (and possibly other languages later) that demonstrates some useful techniques in working with the utf-8 stored as USASCII7 in Voyager's Oracle database.
 
+On my machine I'm using an instant client driver setup, more details on that later.  I'm also using strawberry perl.  
+
+Setup:
+
+All the options for the scripts are kept in a file called db.conf.  I'll get a skeleton file set up soon, but I wanted to get something up.  It's a Config::General file, following the pattern...
+
+VoyDriver = 
+VoyUser = 	
+VoyPass = 
+VoyServer = 
+VoyDatabase = 
+VoyDBQ = 
+
+
+GoogleDBdriver     = 				 
+GoogleDBserver     = 		 
+GoogleDB           =
+
+At some point I'll set up a stub file and make sure my git ignore file is set up correctly.
+
+The later stanza is only needed if you're running some of the scripts that demonstrate inserting into SQL Server.
+
+(I need to clean up some of the scripts so that they each are an example of doing one thing, with some of the less important details put into a module. I want to get what I've done out though, as it's likely
+
+
 Created by 
 Jon Gorman
