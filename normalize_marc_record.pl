@@ -75,19 +75,6 @@ RECORD: while ( my $marc = $file->next() ) {
         }
     }
     
-    
-    #print $marc->as_formatted() ;
-    #my $raw_title = ( $marc->title() ) ;
-
-    #print "Raw title: $raw_title \n ";
-    #my $title = marc8_to_utf8( $raw_title ) ;
-    #print "Converted Title: $title  \n" ;
-    #print $outfile "Raw title: $raw_title \n" ;
-    #print $outfile "NFC title: " . NFC( $raw_title) . "\n" ;
-
-    #print $outfile "$raw_title" . "\n" ;
-    #print $outfile NFC( $raw_title) . "\n" ;
-
     # technically this isn't correct, we
     # should be putting these records into a batch
     # object, as if I remember correctly there's separators
