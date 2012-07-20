@@ -23,7 +23,9 @@ use MARC::File::USMARC ;
 # 
 #use Unicode::CheckUTF8 qw(is_utf8);
 
-my $file = MARC::File::USMARC->in( 'Miserables.bib' ) ;
+my $marc_file = $ARGV[0] ? $ARGV[0] : 'Miserables.bib' ;
+
+my $file = MARC::File::USMARC->in( $marc_file ) ;
 
 open my $outfile, '>>:utf8',  'Miserables_nfc_utf8.mrc' or die "Couldn't open file $! \n" ;
 
