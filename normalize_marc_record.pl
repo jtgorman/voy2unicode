@@ -24,10 +24,11 @@ use MARC::File::USMARC ;
 #use Unicode::CheckUTF8 qw(is_utf8);
 
 my $marc_file = $ARGV[0] ? $ARGV[0] : 'Miserables.bib' ;
+my $outfile_path  = $ARGV[1] ? $ARGV[1] : 'Miserables_nfc_utf8.mrc' ;
 
 my $file = MARC::File::USMARC->in( $marc_file ) ;
 
-open my $outfile, '>>:utf8',  'Miserables_nfc_utf8.mrc' or die "Couldn't open file $! \n" ;
+open my $outfile, '>>:utf8', $outfile_path  or die "Couldn't open file $! \n" ;
 
 RECORD: while ( my $marc = $file->next() ) {
 
