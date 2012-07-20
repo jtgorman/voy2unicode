@@ -1,4 +1,33 @@
+*** Overview
 This is a project to develop some example scripts in Perl (and possibly other languages later) that demonstrates some useful techniques in working with the utf-8 stored as USASCII7 in Voyager's Oracle database.
+
+I've been using some research time on this project, but it is not enough time as I would like.  It is currently pretty rough around the edges, but I'm hoping to improve it and the related document as time goes on.  I figured it was important to my motivation to keep working on it to push it out. 
+
+
+
+*** The scripts
+
+ * normalize_marc_record.pl - Take a utf-8 MARC record and apply NFC 
+ * nfc_normalization.pl     - Connect to Voyager, write out a properly encoded utf-8 string
+ * voyager2sqlserver.pl     - Connect to Voyager, get utf-8 string
+                              and insert into SQL Server (UCS2)
+
+ 
+
+ 
+ *** normalize_marc_record.pl
+
+ To run:
+ ./normalize_marc_record.pl Miserables.bib Miserables_nfc.bib
+
+ This script will go through a MARC utf-8 record and reduce the number of combining diacritics by replacing them with prcomposed characters.  It uses what's called  Normalization Form C (NFC).
+
+Combining diacritics, where a normal ascii character is followed by the diacritic mark and the software is expected to properly combine them, is not very well supported in the osftware world.  There's a tradeoff here as tools that transform from marc-8 to utf-8 might only work with the combining diacritic as marc-8 takes a similar approach.  I think in theory you could just take a record processed to be in NFC with the NFD form, but I haven't explored the issue as well as I'd like.
+
+*** nfc_normalization.pl & voyager2sqlserver.pl
+
+Both scripts requires a Voyager connection via ODBC, while voyager2sqlserver.pl needs a connection to an SQL Server database that has a table test_title with the columns 
+bib_id, title.  I'll try to add a create table script to this package.
 
 On my machine I'm using an instant client driver setup, more details on that later.  I'm also using strawberry perl.  
 
@@ -21,8 +50,6 @@ GoogleDB           =
 At some point I'll set up a stub file and make sure my git ignore file is set up correctly.
 
 The later stanza is only needed if you're running some of the scripts that demonstrate inserting into SQL Server.
-
-(I need to clean up some of the scripts so that they each are an example of doing one thing, with some of the less important details put into a module. I want to get what I've done out though, as it's likely
 
 
 Created by 
